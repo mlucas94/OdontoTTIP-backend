@@ -24,6 +24,8 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	implementation("org.flywaydb:flyway-core:6.4.3")
+	implementation("mysql:mysql-connector-java:8.0.23")
 }
 
 tasks.withType<KotlinCompile> {
