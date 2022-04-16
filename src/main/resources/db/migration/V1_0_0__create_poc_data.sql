@@ -1,7 +1,14 @@
 --DROP TABLE flyway_schema_history;
 
-CREATE TABLE turnos (
-    id INT NOT NULL KEY AUTO_INCREMENT,
+CREATE TABLE turnos
+(
+    id       INT NOT NULL KEY AUTO_INCREMENT,
     paciente INT,
-    fecha DATETIME
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    fecha    DATETIME
+)
+
+CREATE TABLE paciente
+(
+    id INT NOT NULL KEY AUTO_INCREMENT
+        nombre VARCHAR
+);
