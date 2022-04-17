@@ -2,7 +2,7 @@
 
 CREATE TABLE turnos
 (
-    id       INT NOT NULL KEY AUTO_INCREMENT,
+    id INT NOT NULL KEY AUTO_INCREMENT,
     dni VARCHAR(10),
     nombre VARCHAR(255),
     email VARCHAR(255),
