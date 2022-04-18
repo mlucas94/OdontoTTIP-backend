@@ -1,5 +1,6 @@
 package ar.edu.unq.ttip.grupo1s12022.OdontoTTIPbackend.model
 
+import ar.edu.unq.ttip.grupo1s12022.OdontoTTIPbackend.dto.TurnoDTO
 import ar.edu.unq.ttip.grupo1s12022.OdontoTTIPbackend.exceptions.TurnoException
 import java.time.LocalDateTime
 import javax.persistence.*

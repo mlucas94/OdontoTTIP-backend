@@ -10,4 +10,6 @@ interface TurnoPersistence: CrudRepository<Turno, Long> {
 
     override fun findById(id: Long): Optional<Turno>
 
+    override fun deleteById(id: Long)
+
 }

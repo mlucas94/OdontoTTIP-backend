@@ -18,4 +18,7 @@ class TurnoController {
     @GetMapping("/api/turnos")
     fun getTurnos() = turnoService.getTurnos()
 
+    @DeleteMapping("/api/turno/{id}")
+    fun deleteTurno(@PathVariable id:Long) = turnoService.deleteTurno(id)
+
 }

@@ -1,5 +1,6 @@
 package ar.edu.unq.ttip.grupo1s12022.OdontoTTIPbackend.service
 
+import ar.edu.unq.ttip.grupo1s12022.OdontoTTIPbackend.dto.TurnoDTO
 import ar.edu.unq.ttip.grupo1s12022.OdontoTTIPbackend.model.Turno
 import ar.edu.unq.ttip.grupo1s12022.OdontoTTIPbackend.persistence.TurnoPersistence
 import org.springframework.beans.factory.annotation.Autowired
@@ -15,12 +16,21 @@ class TurnoService {
     lateinit var turnoRepository: TurnoPersistence
 
     @Transactional(readOnly = true)
-    fun getTurno(id: Long): Turno =
-        turnoRepository.findById(id).orElseThrow {
+    fun getTurno(id: Long): TurnoDTO {
+        var turno = turnoRepository.findById(id).orElseThrow {
             ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontro el turno con el id $id")
         }
+        return TurnoDTO().fromTurno(turno)
+    }
+
 
     @Transactional(readOnly = true)
     fun getTurnos(): MutableIterable<Turno> =
         turnoRepository.findAll()
+
+    @Transactional
+    fun deleteTurno(id: Long) {
+        turnoRepository.deleteById(id)
+    }
+
 }
