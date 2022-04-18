@@ -20,4 +20,7 @@ class TurnoService {
             ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontro el turno con el id $id")
         }
 
+    @Transactional(readOnly = true)
+    fun getTurnos(): MutableIterable<Turno> =
+        turnoRepository.findAll()
 }

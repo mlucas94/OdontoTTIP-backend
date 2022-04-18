@@ -15,4 +15,7 @@ class TurnoController {
     fun getTurno(@PathVariable id:Long) =
         turnoService.getTurno(id)
 
+    @GetMapping("/api/turnos")
+    fun getTurnos() = turnoService.getTurnos()
+
 }
