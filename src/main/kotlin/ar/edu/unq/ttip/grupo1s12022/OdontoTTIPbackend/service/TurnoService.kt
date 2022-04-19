@@ -33,4 +33,12 @@ class TurnoService {
         turnoRepository.deleteById(id)
     }
 
+    @Transactional
+    fun saveTurno(turno: Turno): TurnoDTO {
+        turno.validar()
+        var result = TurnoDTO()
+        var turnoGuardado = turnoRepository.save(turno)
+        return result.fromTurno(turnoGuardado)
+    }
+
 }

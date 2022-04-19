@@ -10,7 +10,7 @@ import javax.persistence.*
 class Turno {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
     @Column

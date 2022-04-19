@@ -3,20 +3,20 @@ package ar.edu.unq.ttip.grupo1s12022.OdontoTTIPbackend.dto
 import ar.edu.unq.ttip.grupo1s12022.OdontoTTIPbackend.model.Turno
 import java.time.LocalDateTime
 
-class TurnoDTO(idTurno: Long?, dniPaciente: Int?, nombrePaciente: String, fechaTurno: LocalDateTime?,
-               emailPaciente: String, telefonoPaciente: String, finTurno: LocalDateTime?) {
+class TurnoDTO(idTurno: Long?, dni: Int?, nombre: String, fecha: LocalDateTime?,
+               email: String, telefono: String, finTurno: LocalDateTime?) {
 
     var id: Long? = idTurno
 
-    var dni: Int? = dniPaciente
+    var dni: Int? = dni
 
-    var nombre: String = nombrePaciente
+    var nombre: String = nombre
 
-    var email: String = emailPaciente
+    var email: String = email
 
-    var telefono: String = telefonoPaciente
+    var telefono: String = telefono
 
-    var fecha: LocalDateTime? = fechaTurno
+    var fecha: LocalDateTime? = fecha
 
     var horaFinTurno: LocalDateTime? = finTurno
 
@@ -27,13 +27,13 @@ class TurnoDTO(idTurno: Long?, dniPaciente: Int?, nombrePaciente: String, fechaT
         TurnoDTO(turno.id, turno.dni, turno.nombre, turno.fecha,
             turno.email, turno.telefono, turno.horaFinTurno())
 
-    fun turnoFromDTO(turnoDTO: TurnoDTO): Turno {
+    fun turnoFromDTO(): Turno {
         var turno: Turno = Turno()
-        turno.dni = turnoDTO.dni
-        turno.nombre = turnoDTO.nombre
-        turno.email = turnoDTO.email
-        turno.telefono = turnoDTO.telefono
-        turno.fecha = turnoDTO.fecha
+        turno.dni = dni
+        turno.nombre = nombre
+        turno.email = email
+        turno.telefono = telefono
+        turno.fecha = fecha
 
         return turno
     }

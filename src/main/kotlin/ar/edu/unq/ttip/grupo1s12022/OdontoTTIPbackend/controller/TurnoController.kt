@@ -1,8 +1,9 @@
 package ar.edu.unq.ttip.grupo1s12022.OdontoTTIPbackend.controller
 
+import ar.edu.unq.ttip.grupo1s12022.OdontoTTIPbackend.dto.TurnoDTO
+import ar.edu.unq.ttip.grupo1s12022.OdontoTTIPbackend.model.Turno
 import ar.edu.unq.ttip.grupo1s12022.OdontoTTIPbackend.service.TurnoService
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -20,5 +21,8 @@ class TurnoController {
 
     @DeleteMapping("/api/turno/{id}")
     fun deleteTurno(@PathVariable id:Long) = turnoService.deleteTurno(id)
+
+    @PostMapping("/api/turno")
+    fun saveTurno(@RequestBody turno:Turno): TurnoDTO = turnoService.saveTurno(turno)
 
 }
