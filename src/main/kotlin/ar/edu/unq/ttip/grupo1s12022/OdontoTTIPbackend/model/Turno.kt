@@ -6,40 +6,27 @@ import java.time.LocalDateTime
 import javax.persistence.*
 
 @Entity
-@Table(name="turnos")
+@Table(name="turno")
 class Turno {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
-    @Column
-    var dni: Int? = null
-
-    @Column
-    var nombre: String = ""
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name= "paciente_id")
+    var paciente: Paciente? = null
 
     @Column
     var fecha: LocalDateTime? = null
 
-    @Column
-    var email: String = ""
-
-    @Column
-    var telefono: String = ""
-
     fun validar() {
-        if (nombre.trim() == "") {
-            throw TurnoException("Debe ingresar el nombre del paciente")
+        if (paciente === null) {
+            throw TurnoException("El turno debe pertenecer a un paciente registrado")
         }
-        if (dni === null) {
-            throw TurnoException("Debe ingresar el dni del paciente")
-        }
+        paciente!!.validar()
         if (fecha === null) {
             throw TurnoException("El turno necesita tener una fecha asignada")
-        }
-        if (email.trim() == "" && telefono.trim() == "") {
-            throw TurnoException("Se necesita por lo menos un dato de contacto del paciente")
         }
 
     }

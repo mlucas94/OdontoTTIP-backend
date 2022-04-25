@@ -1,14 +1,15 @@
 package ar.edu.unq.ttip.grupo1s12022.OdontoTTIPbackend.dto
 
+import ar.edu.unq.ttip.grupo1s12022.OdontoTTIPbackend.model.Paciente
 import ar.edu.unq.ttip.grupo1s12022.OdontoTTIPbackend.model.Turno
 import java.time.LocalDateTime
 
-class TurnoDTO(idTurno: Long?, dni: Int?, nombre: String, fecha: LocalDateTime?,
+class TurnoDTO(idTurno: Long?, dni: String, nombre: String, fecha: LocalDateTime?,
                email: String, telefono: String, finTurno: LocalDateTime?) {
 
     var id: Long? = idTurno
 
-    var dni: Int? = dni
+    var dni: String = dni
 
     var nombre: String = nombre
 
@@ -20,19 +21,16 @@ class TurnoDTO(idTurno: Long?, dni: Int?, nombre: String, fecha: LocalDateTime?,
 
     var horaFinTurno: LocalDateTime? = finTurno
 
-    constructor() : this(null, null, "", null, "", "", null) {
+    constructor() : this(null, "", "", null, "", "", null) {
     }
 
-    fun fromTurno(turno:Turno): TurnoDTO =
-        TurnoDTO(turno.id, turno.dni, turno.nombre, turno.fecha,
-            turno.email, turno.telefono, turno.horaFinTurno())
+    fun fromTurno(turno:Turno, paciente:Paciente): TurnoDTO =
+        TurnoDTO(turno.id, paciente.dni, paciente.nombre, turno.fecha,
+            paciente.email, paciente.telefono, turno.horaFinTurno())
 
     fun turnoFromDTO(): Turno {
         var turno: Turno = Turno()
-        turno.dni = dni
-        turno.nombre = nombre
-        turno.email = email
-        turno.telefono = telefono
+        turno.paciente = null //falta metodo para recuperar paciente de la base de datos con el id
         turno.fecha = fecha
 
         return turno

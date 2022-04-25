@@ -15,6 +15,7 @@ class TurnoService {
     @Autowired
     lateinit var turnoRepository: TurnoPersistence
 
+
     @Transactional(readOnly = true)
     fun getTurno(id: Long): TurnoDTO {
         var turno = turnoRepository.findById(id).orElseThrow {
