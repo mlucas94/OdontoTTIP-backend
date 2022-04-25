@@ -4,10 +4,12 @@ import ar.edu.unq.ttip.grupo1s12022.OdontoTTIPbackend.model.Paciente
 import ar.edu.unq.ttip.grupo1s12022.OdontoTTIPbackend.model.Turno
 import java.time.LocalDateTime
 
-class TurnoDTO(idTurno: Long?, dni: String, nombre: String, fecha: LocalDateTime?,
+class TurnoDTO(idTurno: Long?, idPaciente: Long?, dni: String, nombre: String, fecha: LocalDateTime?,
                email: String, telefono: String, finTurno: LocalDateTime?) {
 
-    var id: Long? = idTurno
+    var idTurno: Long? = idTurno
+
+    var idPaciente: Long? = idPaciente
 
     var dni: String = dni
 
@@ -21,12 +23,15 @@ class TurnoDTO(idTurno: Long?, dni: String, nombre: String, fecha: LocalDateTime
 
     var horaFinTurno: LocalDateTime? = finTurno
 
-    constructor() : this(null, "", "", null, "", "", null) {
+    constructor() : this(null, null, "", "", null, "", "", null) {
     }
 
-    fun fromTurno(turno:Turno, paciente:Paciente): TurnoDTO =
-        TurnoDTO(turno.id, paciente.dni, paciente.nombre, turno.fecha,
-            paciente.email, paciente.telefono, turno.horaFinTurno())
+    fun fromTurno(turno:Turno): TurnoDTO {
+        var paciente = turno.paciente!!
+
+        return TurnoDTO(turno.id, paciente.id, paciente.dni, paciente.nombre, turno.fecha, paciente.email,
+        paciente.telefono, turno.horaFinTurno())
+    }
 
     fun turnoFromDTO(): Turno {
         var turno: Turno = Turno()

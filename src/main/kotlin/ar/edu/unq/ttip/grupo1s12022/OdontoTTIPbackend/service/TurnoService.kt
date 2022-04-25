@@ -21,6 +21,7 @@ class TurnoService {
         var turno = turnoRepository.findById(id).orElseThrow {
             ResponseStatusException(HttpStatus.NOT_FOUND, "No se encontro el turno con el id $id")
         }
+
         return TurnoDTO().fromTurno(turno)
     }
 
