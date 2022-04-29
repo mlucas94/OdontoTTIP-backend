@@ -14,4 +14,7 @@ class PacienteController {
 
     @GetMapping("/api/paciente/{id}")
     fun getPaciente(@PathVariable id: Long) = pacienteService.getPaciente(id)
+
+    @GetMapping("/api/pacientes")
+    fun getPacientes() = pacienteService.getPacientes()
 }

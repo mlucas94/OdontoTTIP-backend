@@ -14,4 +14,7 @@ class PacienteService {
 
     @Transactional(readOnly = true)
     fun getPaciente(id :Long) = pacienteRepository.findById(id)
+
+    @Transactional(readOnly = true)
+    fun getPacientes() = pacienteRepository.findAll()
 }

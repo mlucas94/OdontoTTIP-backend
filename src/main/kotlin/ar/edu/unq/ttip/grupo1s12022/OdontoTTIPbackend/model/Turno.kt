@@ -20,6 +20,9 @@ class Turno {
     @Column
     var fecha: LocalDateTime? = null
 
+    @Column
+    var horaInicio: String = ""
+
     fun validar() {
         if (paciente === null) {
             throw TurnoException("El turno debe pertenecer a un paciente registrado")
@@ -29,11 +32,6 @@ class Turno {
             throw TurnoException("El turno necesita tener una fecha asignada")
         }
 
-    }
-
-    fun horaFinTurno(): LocalDateTime {
-        val horaFin: LocalDateTime = fecha!!.plusMinutes(30)
-        return horaFin
     }
 
 }
